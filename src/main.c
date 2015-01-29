@@ -12,6 +12,11 @@
 #include <setjmp.h>
 #include <signal.h>
 
+/* Support for compiling to Javascript via emscripten (http://emscripten.org/) */
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 /* Added GNU Readline Support 11/3/97 -- Andrew Veliath <veliaa@rpi.edu> */
 /* from spice3f4 patch to ng-spice. jmr */
 #ifdef HAVE_GNUREADLINE
@@ -1357,6 +1362,11 @@ main(int argc, char **argv)
 
 #endif /* ~ SIMULATOR */
 
+#ifdef __EMSCRIPTEN__
+    emscripten_set_main_loop(app_rl_readlines, 60, 1);
+    /* signal handlers want to longjmp back here, so make sure jbuf is set */
+    SETJMP(jbuf, 1);
+#else
     for (;;)
         if (!SETJMP(jbuf, 1)) {
             /*  enter the command processing loop  */
@@ -1365,4 +1375,5 @@ main(int argc, char **argv)
         } else {
             ft_sigintr_cleanup();
         }
+#endif /* __EMSCRIPTEN__ */
 }

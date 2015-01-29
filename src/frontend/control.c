@@ -640,6 +640,12 @@ cp_evloop(char *string)
         if ((wlist->wl_word == NULL) || (*wlist->wl_word == '\0')) {
             /* User just typed return. */
             wl_free(wlist); /* va, avoid memory leak */
+#ifdef __EMSCRIPTEN__
+            /* emscripten case -- our pretend-nonblocking stdin returns '\n' when there's no input
+               to process. Return 0 so that main loop returns control to emscripten rather than
+               going into infinite loop. */
+            return (0);
+#endif
             if (string) {
                 return (1);
             } else {
