@@ -70,53 +70,13 @@ int add_udn(int,Evt_Udn_Info_t **);
 #endif
 
 
-#include "asrc/asrcitf.h"
 #include "bjt/bjtitf.h"
-#include "bsim1/bsim1itf.h"
-#include "bsim2/bsim2itf.h"
-#include "bsim3/bsim3itf.h"
-#include "bsim3v0/bsim3v0itf.h"
-#include "bsim3v1/bsim3v1itf.h"
-#include "bsim3v32/bsim3v32itf.h"
-#include "bsim4/bsim4itf.h"
-#include "bsim4v5/bsim4v5itf.h"
-#include "bsim4v6/bsim4v6itf.h"
-#include "bsim4v7/bsim4v7itf.h"
-#include "bsim3soi_pd/b3soipditf.h"
-#include "bsim3soi_fd/b3soifditf.h"
-#include "bsim3soi_dd/b3soidditf.h"
-#include "bsimsoi/b4soiitf.h"
 #include "cap/capitf.h"
-#include "cccs/cccsitf.h"
-#include "ccvs/ccvsitf.h"
-#include "csw/cswitf.h"
 #include "dio/dioitf.h"
-#include "hfet1/hfetitf.h"
-#include "hfet2/hfet2itf.h"
-#include "hisim2/hsm2itf.h"
-#include "hisimhv1/hsmhvitf.h"
 #include "ind/inditf.h"
 #include "isrc/isrcitf.h"
-#include "jfet/jfetitf.h"
-#include "jfet2/jfet2itf.h"
-#include "ltra/ltraitf.h"
-#include "mes/mesitf.h"
-#include "mesa/mesaitf.h"
-#include "mos1/mos1itf.h"
-#include "mos2/mos2itf.h"
-#include "mos3/mos3itf.h"
-#include "mos6/mos6itf.h"
-#include "mos9/mos9itf.h"
-#include "cpl/cplitf.h"
 #include "res/resitf.h"
-#include "soi3/soi3itf.h"
 #include "sw/switf.h"
-#include "tra/traitf.h"
-#include "txl/txlitf.h"
-#include "urc/urcitf.h"
-#include "vbic/vbicitf.h"
-#include "vccs/vccsitf.h"
-#include "vcvs/vcvsitf.h"
 #include "vsrc/vsrcitf.h"
 #ifdef ADMS
 #include "adms/hicum0/hicum0itf.h"
@@ -139,54 +99,14 @@ int add_udn(int,Evt_Udn_Info_t **);
 
 static SPICEdev *(*static_devices[])(void) = {
     /* URC device MUST precede both resistors and capacitors */
-    get_urc_info,
-    get_asrc_info,
     get_bjt_info,
-    get_bsim1_info,
-    get_bsim2_info,
-    get_bsim3_info,
-    get_bsim3v0_info,
-    get_bsim3v1_info,
-    get_bsim3v32_info,
-    get_b4soi_info,
-    get_bsim4_info,
-    get_bsim4v5_info,
-    get_bsim4v6_info,
-    get_bsim4v7_info,
-    get_b3soipd_info,
-    get_b3soifd_info,
-    get_b3soidd_info,
     get_cap_info,
-    get_cccs_info,
-    get_ccvs_info,
-    get_cpl_info,
-    get_csw_info,
     get_dio_info,
-    get_hfeta_info,
-    get_hfet2_info,
-    get_hsm2_info,
-    get_hsmhv_info,
     get_ind_info,
     get_mut_info,
     get_isrc_info,
-    get_jfet_info,
-    get_jfet2_info,
-    get_ltra_info,
-    get_mes_info,
-    get_mesa_info,
-    get_mos1_info,
-    get_mos2_info,
-    get_mos3_info,
-    get_mos6_info,
-    get_mos9_info,
     get_res_info,
-    get_soi3_info,
     get_sw_info,
-    get_tra_info,
-    get_txl_info,
-    get_vbic_info,
-    get_vccs_info,
-    get_vcvs_info,
     get_vsrc_info,
 
 #ifdef CIDER
@@ -284,15 +204,9 @@ SPICEdev ** devices(void)
 /*not yet usable*/
 
 #ifdef ADMS
-#define DEVICES_USED {"asrc", "bjt", "vbic", "bsim1", "bsim2", "bsim3", "bsim3v32", "bsim3v2", "bsim3v1", "bsim4", "bsim4v5", "bsim4v6", "bsim4v7", \
-                      "bsim4soi", "bsim3soipd", "bsim3soifd", "bsim3soidd", "hisim2", "hisimhv1", \
-                      "cap", "cccs", "ccvs", "csw", "dio", "hfet", "hfet2", "ind", "isrc", "jfet", "ltra", "mes", "mesa" ,"mos1", "mos2", "mos3", \
-                      "mos6", "mos9", "res", "soi3", "sw", "tra", "urc", "vccs", "vcvs", "vsrc", "hicum0", "hicum2", "bjt504t", "ekv", "psp102"}
+#define DEVICES_USED {"bjt", "cap", "dio", "ind", "isrc", "res", "sw", "vsrc", "hicum0", "hicum2", "bjt504t", "ekv", "psp102"}
 #else
-#define DEVICES_USED {"asrc", "bjt", "vbic", "bsim1", "bsim2", "bsim3", "bsim3v32", "bsim3v2", "bsim3v1", "bsim4", "bsim4v5", "bsim4v6", "bsim4v7", \
-                      "bsim4soi", "bsim3soipd", "bsim3soifd", "bsim3soidd", "hisim2", "hisimhv1", \
-                      "cap", "cccs", "ccvs", "csw", "dio", "hfet", "hfet2", "ind", "isrc", "jfet", "ltra", "mes", "mesa" ,"mos1", "mos2", "mos3", \
-                      "mos6", "mos9", "res", "soi3", "sw", "tra", "urc", "vccs", "vcvs", "vsrc"}
+#define DEVICES_USED {"bjt", "cap", "dio", "ind", "isrc", "res", "sw", "vsrc"}
 #endif
 int load_dev(char *name) {
   char *msg;

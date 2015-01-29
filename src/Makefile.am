@@ -44,53 +44,13 @@ initdata_DATA += devload devaxis ciderinit
 endif
 
 DYNAMIC_DEVICELIBS =					\
-	spicelib/devices/asrc/libasrc.la		\
 	spicelib/devices/bjt/libbjt.la			\
-	spicelib/devices/bsim1/libbsim1.la		\
-	spicelib/devices/bsim2/libbsim2.la		\
-	spicelib/devices/bsim3/libbsim3.la		\
-	spicelib/devices/bsim3v0/libbsim3v0.la		\
-	spicelib/devices/bsim3v1/libbsim3v1.la		\
-	spicelib/devices/bsim3v32/libbsim3v32.la	\
-	spicelib/devices/bsim4/libbsim4.la		\
-	spicelib/devices/bsim4v5/libbsim4v5.la		\
-	spicelib/devices/bsim4v6/libbsim4v6.la		\
-	spicelib/devices/bsim4v7/libbsim4v7.la		\
 	spicelib/devices/cap/libcap.la			\
-	spicelib/devices/bsim3soi_pd/libbsim3soipd.la	\
-	spicelib/devices/bsim3soi_fd/libbsim3soifd.la	\
-	spicelib/devices/bsim3soi_dd/libbsim3soidd.la	\
-	spicelib/devices/bsimsoi/libbsim4soi.la		\
-	spicelib/devices/cccs/libcccs.la		\
-	spicelib/devices/ccvs/libccvs.la		\
-	spicelib/devices/cpl/libcpl.la			\
-	spicelib/devices/csw/libcsw.la			\
 	spicelib/devices/dio/libdio.la			\
 	spicelib/devices/ind/libind.la			\
 	spicelib/devices/isrc/libisrc.la		\
-	spicelib/devices/hfet1/libhfet.la		\
-	spicelib/devices/hfet2/libhfet2.la		\
-	spicelib/devices/hisim2/libhisim2.la		\
-	spicelib/devices/hisimhv1/libhisimhv1.la	\
-	spicelib/devices/jfet/libjfet.la		\
-	spicelib/devices/jfet2/libjfet2.la		\
-	spicelib/devices/ltra/libltra.la		\
-	spicelib/devices/mes/libmes.la			\
-	spicelib/devices/mesa/libmesa.la		\
-	spicelib/devices/mos1/libmos1.la		\
-	spicelib/devices/mos2/libmos2.la		\
-	spicelib/devices/mos3/libmos3.la		\
-	spicelib/devices/mos6/libmos6.la		\
-	spicelib/devices/mos9/libmos9.la		\
 	spicelib/devices/res/libres.la			\
-	spicelib/devices/soi3/libsoi3.la		\
 	spicelib/devices/sw/libsw.la			\
-	spicelib/devices/txl/libtxl.la			\
-	spicelib/devices/tra/libtra.la			\
-	spicelib/devices/urc/liburc.la			\
-	spicelib/devices/vbic/libvbic.la		\
-	spicelib/devices/vccs/libvccs.la		\
-	spicelib/devices/vcvs/libvcvs.la		\
 	spicelib/devices/vsrc/libvsrc.la		\
 	@VLADEV@
 
